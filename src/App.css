@@ -654,35 +654,39 @@ section {
 # Clients
 --------------------------------------------------------------*/
 .clients {
-  padding-top: 20px;
+  padding: 20px 0;
 }
 
-.clients .swiper-slide img {
-  opacity: 0.5;
-  transition: 0.3s;
-  filter: grayscale(100);
+.client-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.clients .swiper-slide img:hover {
-  filter: none;
-  opacity: 1;
+.client-images img {
+  width: calc(16.666% - 20px); /* 6 images in a row with 20px margin */
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.clients .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
+.client-images img:hover {
+  transform: scale(1.05);
 }
 
-.clients .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
-  opacity: 1;
-  background-color: #ddd;
+@media (max-width: 768px) {
+  .client-images img {
+    width: calc(33.333% - 20px); /* 3 images in a row with 20px margin */
+  }
 }
 
-.clients .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #318d4d;
+@media (max-width: 480px) {
+  .client-images img {
+    width: calc(50% - 20px); /* 2 images in a row with 20px margin */
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1305,10 +1309,11 @@ section {
 }
 
 .contact .info h4 {
+  margin-top: 0px;
   padding: 0 0 0 60px;
   font-size: 22px;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: px;
   color: #151515;
 }
 
