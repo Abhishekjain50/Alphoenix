@@ -9,19 +9,15 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/swiper-bundle.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
 // Import all images
 import appIcon from './assets/appIcon/logoalphoenix.png';
 import featuresImage from './assets/img/features.jpg';
 import aboutImage from './assets/img/about.png';
-import clientImage1 from './assets/img/clients/client-1.png';
-import clientImage2 from './assets/img/clients/client-2.png';
-import clientImage3 from './assets/img/clients/client-3.png';
-import clientImage4 from './assets/img/clients/client-4.png';
-import clientImage5 from './assets/img/clients/client-5.png';
-import clientImage6 from './assets/img/clients/client-6.png';
-import clientImage7 from './assets/img/clients/client-7.png';
-import clientImage8 from './assets/img/clients/client-8.png';
+import antrapreneur from './assets/img/supportedBy/antrapreneur.jpg';
+import SSIP from './assets/img/supportedBy/SSIP.jpg';
+import iCreation from './assets/img/supportedBy/iCreation.jpg';
+import iHub from './assets/img/supportedBy/iHub.jpg';
+import startupIndia from './assets/img/supportedBy/startupIndia.jpg';
 import portfolioImage1 from './assets/img/portfolio/portfolio-1.jpg';
 import portfolioImage2 from './assets/img/portfolio/portfolio-2.jpg';
 import portfolioImage3 from './assets/img/portfolio/portfolio-3.jpg';
@@ -36,15 +32,31 @@ import testimonialImage2 from './assets/img/testimonials/testimonials-2.jpg';
 import testimonialImage3 from './assets/img/testimonials/testimonials-3.jpg';
 import testimonialImage4 from './assets/img/testimonials/testimonials-4.jpg';
 import testimonialImage5 from './assets/img/testimonials/testimonials-5.jpg';
-import teamImage1 from './assets/img/team/team-1.jpg';
-import teamImage2 from './assets/img/team/team-2.jpg';
-import teamImage3 from './assets/img/team/team-3.jpg';
+import dharmik from './assets/img/team/dharmik.jpg';
+import dhrumee from './assets/img/team/dhrumee.jpg';
+import hardik from './assets/img/team/hardik.jpg';
+import paranv from './assets/img/team/pranav.jpg';
+import sahil from './assets/img/team/sahil.jpg';
+import anisha from './assets/img/team/anisha.jpg';
 import productDesign from './assets/img/services/productDesign.jpg'
 import machingService from './assets/img/services/machingService.jpg'
 import bldcMotor from './assets/img/services/bldcMotor.jpg'
 import prototype from './assets/img/services/prototype.jpg'
 import projectManagement from './assets/img/services/projectManagement.jpg'
 import electronics from './assets/img/services/electronics.jpg'
+import partners1 from './assets/img/partners/partners1.png';
+import partners2 from './assets/img/partners/partners2.png';
+import partners3 from './assets/img/partners/partners3.png';
+import partners4 from './assets/img/partners/partners4.png';
+import partners5 from './assets/img/partners/partners5.png';
+import partners6 from './assets/img/partners/partners6.png';
+import partners7 from './assets/img/partners/partners7.gif';
+import partners8 from './assets/img/partners/partners8.png';
+import partners9 from './assets/img/partners/partners9.png';
+import patentMotor from './assets/img/subPart/patentMotor.JPG';
+import recognization from './assets/img/subPart/recognization.jpg';
+import developmentPath from './assets/img/subPart/developmentPath.jpg';
+
 
 // // Import all icons
 import { FaLocationDot } from "react-icons/fa6";
@@ -56,21 +68,71 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa";
 
-
-function Modal({ isOpen, onClose, children }) {
-  if (!isOpen) return null;
-
-  return ReactDOM.createPortal(
-    <div className="modal-overlay">
-      <div className="modal">
-        <button className="close-btn" onClick={onClose}>Close</button>
-        {children}
-      </div>
-    </div>,
-    document.getElementById('modal-root')
-  );
-}
-
+const portfolioItems = [
+  {
+    title: "App 1",
+    category: "app",
+    image: portfolioImage1,
+    gallery: "assets/img/portfolio/portfolio-1.jpg",
+    details: "portfolio-details.html"
+  },
+  {
+    title: "Web 3",
+    category: "web",
+    image: portfolioImage2,
+    gallery: "assets/img/portfolio/portfolio-2.jpg",
+    details: "portfolio-details.html"
+  },
+  {
+    title: "App 2",
+    category: "app",
+    image: portfolioImage3,
+    gallery: "assets/img/portfolio/portfolio-3.jpg",
+    details: "portfolio-details.html"
+  },
+  {
+    title: "Card 2",
+    category: "card",
+    image: portfolioImage4,
+    gallery: "assets/img/portfolio/portfolio-4.jpg",
+    details: "portfolio-details.html"
+  },
+  {
+    title: "Web 2",
+    category: "web",
+    image: portfolioImage5,
+    gallery: "assets/img/portfolio/portfolio-5.jpg",
+    details: "portfolio-details.html"
+  },
+  {
+    title: "App 3",
+    category: "app",
+    image: portfolioImage6,
+    gallery: "assets/img/portfolio/portfolio-6.jpg",
+    details: "portfolio-details.html"
+  },
+  {
+    title: "Card 1",
+    category: "card",
+    image: portfolioImage7,
+    gallery: "assets/img/portfolio/portfolio-7.jpg",
+    details: "portfolio-details.html"
+  },
+  {
+    title: "Card 3",
+    category: "card",
+    image: portfolioImage8,
+    gallery: "assets/img/portfolio/portfolio-8.jpg",
+    details: "portfolio-details.html"
+  },
+  {
+    title: "Web 3",
+    category: "web",
+    image: portfolioImage9,
+    gallery: "assets/img/portfolio/portfolio-9.jpg",
+    details: "portfolio-details.html"
+  }
+];
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -114,28 +176,28 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const swiper = new Swiper('.swiper-container', {
-      direction: 'horizontal',
-      loop: true,
-      autoplay: {
-        delay: 3000, // Adjust the delay as needed
-        disableOnInteraction: false
-      },
-      slidesPerView: 'auto',
-      spaceBetween: 20,
-      centeredSlides: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
+  // useEffect(() => {
+  //   const swiper = new Swiper('.swiper-container', {
+  //     direction: 'horizontal',
+  //     loop: true,
+  //     autoplay: {
+  //       delay: 3000, // Adjust the delay as needed
+  //       disableOnInteraction: false
+  //     },
+  //     slidesPerView: 'auto',
+  //     spaceBetween: 20,
+  //     centeredSlides: true,
+  //     pagination: {
+  //       el: '.swiper-pagination',
+  //       clickable: true,
+  //     },
+  //   });
 
-    // Cleanup function to destroy swiper instance
-    return () => {
-      swiper.destroy(true, true);
-    };
-  }, []);
+  //   // Cleanup function to destroy swiper instance
+  //   return () => {
+  //     swiper.destroy(true, true);
+  //   };
+  // }, []);
 
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -161,10 +223,9 @@ function App() {
     });
   };
 
-  const address = "A202, Dharti - 1, New Ranip, Ahmedabad, Gujarat, India";
-  const formattedAddress = encodeURIComponent(address);
-
-  const mapUrl = `https://www.google.com/maps/embed/v1/place?q=${formattedAddress}&key=YOUR_API_KEY`;
+  const [filter, setFilter] = useState('all');
+  const filteredItems = filter == 'all' ? portfolioItems : portfolioItems.filter(item => item.category === filter);
+  console.log("filteredItem=>>>>", filteredItems)
 
   return (
     // <div className="App">
@@ -211,7 +272,7 @@ function App() {
           <div className="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
             {/* col-xl-6 */}
             <div className="col-lg-8">
-              <h1><span>"</span>Innovation Meets Precision With Alphoenix Design<span>"</span></h1>
+              <h1><span>“</span>Innovation Meets Precision With Alphoenix Design<span>”</span></h1>
               {/* <h2>We are team of talented digital marketers</h2> */}
             </div>
           </div>
@@ -297,172 +358,101 @@ function App() {
         </section>
         {/* <!-- End About Section --> */}
 
-        {/* <!-- ======= Clients Section ======= --> */}
-        {/* <section id="clients" className="clients">
-      <div className="container" data-aos="zoom-in">
-
-        <div className="clients-slider swiper">
-          <div className="swiper-wrapper align-items-center">
-            <div className="swiper-slide"><img src={clientImage1} className="img-fluid" alt=""/></div>
-            <div className="swiper-slide"><img src={clientImage2} className="img-fluid" alt=""/></div>
-            <div className="swiper-slide"><img src={clientImage3} className="img-fluid" alt=""/></div>
-            <div className="swiper-slide"><img src={clientImage4} className="img-fluid" alt=""/></div>
-            <div className="swiper-slide"><img src={clientImage5} className="img-fluid" alt=""/></div>
-            <div className="swiper-slide"><img src={clientImage6} className="img-fluid" alt=""/></div>
-            <div className="swiper-slide"><img src={clientImage7} className="img-fluid" alt=""/></div>
-            <div className="swiper-slide"><img src={clientImage8} className="img-fluid" alt=""/></div>
+        <section id="vision" className="about">
+          <div className="container vision-container" data-aos="fade-up">
+            <div className="section-title" style={{ paddingBottom: 0, marginLeft: 30, marginRight: 30 }}>
+              {/* <h2>About Us</h2> */}
+              <p>Vision</p>
+            </div>
+            <p style={{ fontSize: 18, textAlign: 'justify', lineHeight: 2, marginLeft: 30, marginRight: 30 }}><span style={{ color: '#91c27d' }}>"</span>Alphoenix Design envisions a world where every electic motor embodies efficiency and sustainbility. We drive the next generation of BLDC moters, setting benchmarks
+              for performance and environmental impact. Inspiring positive change globally, we foster a future where technology and sustainbility seamlessly coexist, leaving a
+              lasting legacy of innovation and eco-conscious design.<span style={{ color: '#91c27d' }}>"</span>
+            </p>
           </div>
-          <div className="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section> */}
-        {/* <!-- End Clients Section --> */}
+        </section>
 
         {/* <!-- ======= Features Section ======= --> */}
-
-
-
         <section id="testimonials" className="testimonials">
           <div className="container" data-aos="zoom-in">
-          <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-evenly' }}>
+            <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around', }}>
               <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> */}
-                {/* <i className="bx bx-receipt"></i> */}
-                {/* <button onClick={() => setIsModalOpen(true)}>Open Modal</button> */}
-                <button type="button" className="btn p-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <h4>Petended motors</h4>
-</button>
-                {/* </button> */}
-              </div>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <i className="bx bx-cube-alt"></i> */}
-                <h4>Happy clients</h4>
-                {/* <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p> */}
-              </div>
-            </div>
-
-            <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around', marginTop: 40 }}>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <i className="bx bx-images"></i> */}
-                <h4>Projects</h4>
-                {/* <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p> */}
-              </div>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <i className="bx bx-shield"></i> */}
-                <h4>Experience</h4>
-                {/* <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p> */}
-              </div>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <i className="bx bx-shield"></i> */}
-                <h4>Awards</h4>
-                {/* <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p> */}
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-
-
-
-        <section id="features" className="features">
-          <div className="container" data-aos="fade-up" style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)', paddingTop: 30, paddingBottom: 30 }}>
-
-
-            {/* <div className="image col-lg-6"
-                style={{
-                  backgroundImage:
-                    `url(${featuresImage})`, borderRadius: 30
-                }}
-                data-aos="fade-right"></div> */}
-
-            <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-evenly' }}>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> */}
-                {/* <i className="bx bx-receipt"></i> */}
-                {/* <button onClick={() => setIsModalOpen(true)}>Open Modal</button> */}
-                
-
-                
-                {/* </button> */}
-              </div>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <i className="bx bx-cube-alt"></i> */}
-                <h4>Happy clients</h4>
-                {/* <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p> */}
-              </div>
-            </div>
-
-            <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around', marginTop: 40 }}>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <i className="bx bx-images"></i> */}
-                <h4>Projects</h4>
-                {/* <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p> */}
-              </div>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <i className="bx bx-shield"></i> */}
-                <h4>Experience</h4>
-                {/* <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p> */}
-              </div>
-              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
-                {/* <i className="bx bx-shield"></i> */}
-                <h4>Awards</h4>
-                {/* <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p> */}
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-
-
-
-
-        {/* <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div className="modal-dialog modal-dialog-centered" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#petendedMotors">
+                  <h4>Petended motors</h4>
                 </button>
               </div>
-              <div className="modal-body">
-                ...
+              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
+                <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#developmentPath">
+                  <h4>Development Path</h4>
+                </button>
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
+              <div className='startup-btn' data-aos="zoom-in" data-aos-delay="150">
+                <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#recognizations">
+                  <h4>Recognizations</h4>
+                </button>
               </div>
             </div>
           </div>
-        </div> */}
+        </section>
 
 
-
-        {/* <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <h2>This is a modal!</h2>
-          <p>You can put any content here.</p>
-        </Modal> */}
         <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div className="modal-dialog modal-dialog-centered">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div className="modal-body">
-        ...
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                {/* <h5 className="modal-title" id="staticBackdropLabel">Design of petended motor</h5> */}
+                <h5 className="modal-title" id="staticBackdropLabel">Recognization</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body">
+                <img src={recognization} className="about-pic" alt="" />
+                {/* <img src={patentMotor} className="about-pic" alt="" /> */}
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                {/* <button type="button" className="btn btn-primary">Understood</button> */}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="modal fade" id="petendedMotors" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="staticBackdropLabel">Petended Motors</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body">
+                <img src={patentMotor} alt="" class='model-img' />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="modal fade" id="developmentPath" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="staticBackdropLabel">Development Path</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body">
+                <img src={developmentPath} alt="" class='model-img' />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="modal fade" id="recognizations" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="staticBackdropLabel">Recognizations</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body">
+                <img src={recognization} alt="" class='model-img' />
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -495,7 +485,7 @@ function App() {
                   <div className="icon">
                     {/* <i className="bx bx-file"></i> */}
                     <img src={bldcMotor} alt="" style={{ height: 90, width: 130, marginBottom: 10 }} />
-                    </div>
+                  </div>
                   <h4><a href="" style={{ textDecoration: 'none' }}>BLDC motor design and development</a></h4>
                   <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                 </div>
@@ -517,7 +507,7 @@ function App() {
                   <div className="icon">
                     {/* <i className="bx bx-world"></i> */}
                     <img src={prototype} alt="" style={{ height: 110, width: 130, marginBottom: 10 }} />
-                    </div>
+                  </div>
                   <h4><a href="" style={{ textDecoration: 'none' }}>Prototyping</a></h4>
                   <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                 </div>
@@ -547,7 +537,7 @@ function App() {
                   <div className="icon">
                     {/* <i className="bx bx-arch"></i> */}
                     <img src={projectManagement} alt="" style={{ height: 110, width: 130, marginBottom: 10 }} />
-                    </div>
+                  </div>
                   <h4><a href="" style={{ textDecoration: 'none' }}>Project management</a></h4>
                   <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
                 </div>
@@ -585,141 +575,32 @@ function App() {
             <div className="row" data-aos="fade-up" data-aos-delay="100">
               <div className="col-lg-12 d-flex justify-content-center">
                 <ul id="portfolio-flters">
-                  <li data-filter="*" className="filter-active">All</li>
-                  <li data-filter=".filter-app">App</li>
-                  <li data-filter=".filter-card">Card</li>
-                  <li data-filter=".filter-web">Web</li>
+                  <li onClick={() => setFilter('all')} className={filter === 'all' ? 'filter-active' : ''}>All</li>
+                  <li onClick={() => setFilter('product')} className={filter === 'product' ? 'filter-active' : ''}>Product</li>
+                  <li onClick={() => setFilter('app')} className={filter === 'app' ? 'filter-active' : ''}>App</li>
+                  {/* <li onClick={() => setFilter('web')} className={filter === 'web' ? 'filter-active' : ''}>Web</li> */}
+                  <li onClick={() => setFilter('card')} className={filter === 'card' ? 'filter-active' : ''}>card</li>
                 </ul>
               </div>
             </div>
 
             <div className="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage1} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>App 1</h4>
-                    <p>App</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 1"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
+              {console.log('filteredItems:', filteredItems)}
+              {filteredItems.map((item, index) => (
+                <div key={index} className={`col-lg-4 col-md-6 portfolio-item filter-${item.category}`}>
+                  <div className="portfolio-wrap">
+                    <img src={item.image} className="img-fluid" alt="" />
+                    <div className="portfolio-info">
+                      <h4>{item.title}</h4>
+                      <p>{item.category}</p>
+                      <div className="portfolio-links">
+                        <a href={item.image} data-gallery="portfolioGallery" className="portfolio-lightbox" title={item.name}><i className="bx bx-plus"></i></a>
+                        <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage2} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>Web 3</h4>
-                    <p>Web</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage3} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>App 2</h4>
-                    <p>App</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 2"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage4} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>Card 2</h4>
-                    <p>Card</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 2"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage5} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>Web 2</h4>
-                    <p>Web</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 2"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage6} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>App 3</h4>
-                    <p>App</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 3"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage7} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>Card 1</h4>
-                    <p>Card</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 1"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage8} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>Card 3</h4>
-                    <p>Card</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 3"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div className="portfolio-wrap">
-                  <img src={portfolioImage9} className="img-fluid" alt="" />
-                  <div className="portfolio-info">
-                    <h4>Web 3</h4>
-                    <p>Web</p>
-                    <div className="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
 
             </div>
 
@@ -727,61 +608,44 @@ function App() {
         </section>
         {/* <!-- End Portfolio Section --> */}
 
-        {/* <!-- ======= Counts Section ======= --> */}
-        {/* <section id="counts" className="counts">
-      <div className="container" data-aos="fade-up">
-
-        <div className="row no-gutters">
-          <div className="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
-          <div className="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
-            <div className="content d-flex flex-column justify-content-center">
-              <h3>Voluptatem dignissimos provident quasi</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
-              <div className="row">
-                <div className="col-md-6 d-md-flex align-items-md-stretch">
-                  <div className="count-box">
-                    <i className="bi bi-emoji-smile"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2" className="purecounter"></span>
-                    <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
-                  </div>
-                </div>
-
-                <div className="col-md-6 d-md-flex align-items-md-stretch">
-                  <div className="count-box">
-                    <i className="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2" className="purecounter"></span>
-                    <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
-                  </div>
-                </div>
-
-                <div className="col-md-6 d-md-flex align-items-md-stretch">
-                  <div className="count-box">
-                    <i className="bi bi-clock"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="4" className="purecounter"></span>
-                    <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
-                  </div>
-                </div>
-
-                <div className="col-md-6 d-md-flex align-items-md-stretch">
-                  <div className="count-box">
-                    <i className="bi bi-award"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="4" className="purecounter"></span>
-                    <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* <!-- ======= Clients Section ======= --> */}
+        <section className="clients vision-container" style={{ borderRadius: 0, paddingLeft: 100, paddingRight: 100 }}>
+          <div className="section-title" style={{ textAlign: 'center' }}>
+            {/* <h2>Supported By</h2> */}
+            <p>Supported By</p>
           </div>
-        </div>
+          <div className="client-images">
+            <img src={startupIndia} alt="" style={{ height: 80, width: 185 }} />
+            <img src={SSIP} alt="" style={{ height: 120, width: 120 }} />
+            <img src={iHub} alt="" style={{ height: 80, width: 150 }} />
+            <img src={iCreation} alt="" style={{ height: 105, width: 145 }} />
+            <img src={antrapreneur} alt="" style={{ height: 60, width: 165 }} />
+          </div>
+        </section>
+        {/* <!-- End Clients Section --> */}
 
-      </div>
-    </section> */}
-        {/* <!-- End Counts Section --> */}
+        {/* <!-- ======= Clients Section ======= --> */}
+        <section className="partners vision-container" style={{ marginTop: 30, borderRadius: 0, paddingLeft: 130, paddingRight: 130, marginBottom: 30, }}>
+          {/* <section className="partners vision-container" style={{marginTop: 30, borderRadius: 0, paddingLeft: 60, paddingRight: 60, marginBottom: 30,}}> */}
+          <div className="section-title" style={{ textAlign: 'center' }}>
+            {/* <h2>Supported By</h2> */}
+            <p>Our partners</p>
+          </div>
+          <div className="partner-images">
+            {/* <img src={partners1} alt="" style={{height: 80, width: 115}}/> */}
+            <img src={partners2} alt="" style={{ height: 80, width: 125 }} />
+            {/* <img src={partners3} alt="" style={{height: 80, width: 145}}/> */}
+            <img src={partners5} alt="" style={{ height: 100, width: 135 }} />
+            <img src={partners6} alt="" style={{ height: 80, width: 105 }} />
+            <img src={partners7} alt="" style={{ height: 80, width: 125 }} />
+            <img src={partners8} alt="" style={{ height: 80, width: 195 }} />
+            <img src={partners9} alt="" style={{ height: 80, width: 175 }} />
+          </div>
+        </section>
+        {/* <!-- End Clients Section --> */}
 
         {/* <!-- ======= Testimonials Section ======= --> */}
-        <section id="testimonials" className="testimonials">
+        {/* <section id="testimonials" className="testimonials">
           <div className="container" data-aos="zoom-in">
             <div className="swiper-container" data-aos="fade-up" data-aos-delay="100">
               <div className="swiper-wrapper">
@@ -797,7 +661,6 @@ function App() {
                     </p>
                   </div>
                 </div>
-                {/* <!-- End testimonial item --> */}
 
                 <div className="swiper-slide">
                   <div className="testimonial-item">
@@ -811,7 +674,6 @@ function App() {
                     </p>
                   </div>
                 </div>
-                {/* <!-- End testimonial item --> */}
 
                 <div className="swiper-slide">
                   <div className="testimonial-item">
@@ -825,7 +687,6 @@ function App() {
                     </p>
                   </div>
                 </div>
-                {/* <!-- End testimonial item --> */}
 
                 <div className="swiper-slide">
                   <div className="testimonial-item">
@@ -839,7 +700,6 @@ function App() {
                     </p>
                   </div>
                 </div>
-                {/* <!-- End testimonial item --> */}
 
                 <div className="swiper-slide">
                   <div className="testimonial-item">
@@ -857,7 +717,7 @@ function App() {
               <div className="swiper-pagination"></div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* <!-- End Testimonials Section --> */}
 
         {/* <!-- ======= Team Section ======= --> */}
@@ -873,7 +733,7 @@ function App() {
               <div className="col-lg-2 col-md-6 d-flex align-items-stretch">
                 <div className="member" data-aos="fade-up" data-aos-delay="100" style={{ borderRadius: 30 }}>
                   <div className="member-img" >
-                    <img src={teamImage1} className="img-fluid" alt="" />
+                    <img src={paranv} className="img-fluid common-image" alt="" />
                     <div className="social">
                       {/* <a href=""><FaTwitter /></a>
                       <a href=""><FaFacebook /></a>
@@ -891,7 +751,7 @@ function App() {
               <div className="col-lg-2 col-md-6 d-flex align-items-stretch">
                 <div className="member" data-aos="fade-up" data-aos-delay="200" style={{ borderRadius: 30 }}>
                   <div className="member-img">
-                    <img src={teamImage2} className="img-fluid" alt="" />
+                    <img src={dhrumee} className="img-fluid common-image" alt="" />
                     <div className="social">
                       {/* <a href=""><FaTwitter /></a>
                       <a href=""><FaFacebook /></a>
@@ -909,7 +769,7 @@ function App() {
               <div className="col-lg-2 col-md-6 d-flex align-items-stretch">
                 <div className="member" data-aos="fade-up" data-aos-delay="300" style={{ borderRadius: 30 }}>
                   <div className="member-img">
-                    <img src={teamImage3} className="img-fluid" alt="" />
+                    <img src={hardik} className="img-fluid common-image" alt="" />
                     <div className="social">
                       {/* <a href=""><FaTwitter /></a>
                       <a href=""><FaFacebook /></a>
@@ -927,7 +787,7 @@ function App() {
               <div className="col-lg-2 col-md-6 d-flex align-items-stretch">
                 <div className="member" data-aos="fade-up" data-aos-delay="300" style={{ borderRadius: 30 }}>
                   <div className="member-img">
-                    <img src={teamImage3} className="img-fluid" alt="" />
+                    <img src={sahil} className="img-fluid common-image" alt="" />
                     <div className="social">
                       {/* <a href=""><FaTwitter /></a>
                       <a href=""><FaFacebook /></a>
@@ -945,7 +805,7 @@ function App() {
               <div className="col-lg-2 col-md-6 d-flex align-items-stretch">
                 <div className="member" data-aos="fade-up" data-aos-delay="300" style={{ borderRadius: 30 }}>
                   <div className="member-img">
-                    <img src={teamImage3} className="img-fluid" alt="" />
+                    <img src={dharmik} className="img-fluid common-image" alt="" />
                     <div className="social">
                       {/* <a href=""><FaTwitter /></a>
                       <a href=""><FaFacebook /></a>
@@ -963,7 +823,7 @@ function App() {
               <div className="col-lg-2 col-md-6 d-flex align-items-stretch">
                 <div className="member" data-aos="fade-up" data-aos-delay="300" style={{ borderRadius: 30 }}>
                   <div className="member-img">
-                    <img src={teamImage3} className="img-fluid" alt="" />
+                    <img src={anisha} className="img-fluid common-image" alt="" style={{ backgroundColor: 'red', }} />
                     <div className="social">
                       {/* <a href=""><FaTwitter /></a>
                       <a href=""><FaFacebook /></a>
@@ -1093,60 +953,31 @@ function App() {
           <div className="container">
             <div className="row">
 
-              {/* <div className="col-lg-3 col-md-6">
-            <div className="footer-info">
-              <h3>Gp<span>.</span></h3>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-              <div className="social-links mt-3">
-                <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>
-                <a href="#" className="facebook"><i className="bx bxl-facebook"></i></a>
-                <a href="#" className="instagram"><i className="bx bxl-instagram"></i></a>
-                <a href="#" className="google-plus"><i className="bx bxl-skype"></i></a>
-                <a href="#" className="linkedin"><i className="bx bxl-linkedin"></i></a>
-              </div>
-            </div>
-          </div> */}
 
-              <div className="col-lg-2 col-md-6 footer-links">
-                <h4>Useful Links</h4>
-                <ul>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Home</a></li>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>About us</a></li>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Services</a></li>
-                  {/* <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Terms of service</a></li> */}
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Privacy policy</a></li>
-                </ul>
+              <div style={{ display: 'flex' }}>
+                <div className="col-lg-6" style={{ width: '50%' }}>
+                  <div className="footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                      <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Product design and development</a></li>
+                      <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>BLDC motor design and development</a></li>
+                      <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Machining services</a></li>
+                      <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Prototyping</a></li>
+                      <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Electronics R&D</a></li>
+                      <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Project management</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="col-lg-6" style={{ width: '50%', paddingLeft: '20%' }}>
+                  <div className="footer-links">
+                    <h4>Privacy Policy</h4>
+                  </div>
+                </div>
               </div>
 
-              <div className="col-lg-3 col-md-6 footer-links">
-                <h4>Our Services</h4>
-                <ul>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Product design and development</a></li>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>BLDC motor design and development</a></li>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Machining services</a></li>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Prototyping</a></li>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Electornics R&D</a></li>
-                  <li><i className="bx bx-chevron-right"></i> <a href="#" style={{ textDecoration: 'none' }}>Project management</a></li>
-                </ul>
-              </div>
+
 
               <div className="col-lg-4 col-md-6 footer-newsletter">
-                <h4>Vision</h4>
-                <p>Alphoenix Design envisions a world where every electic motor embodies efficiency and sustainbility. We drive the next generation of BLDC moters, setting benchmarks
-                  for performance and environmental impact. Inspiring positive change globally, we foster a future where technology and sustainbility seamlessly coexist, leaving a
-                  lasting legacy of innovation and eco-conscious design.
-                </p>
-                <br />
-                {/* <h4>Mission</h4>
-                <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p> */}
-                {/* <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form> */}
 
               </div>
 
